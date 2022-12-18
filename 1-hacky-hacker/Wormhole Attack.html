@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+<style>
+
+#h3{
+    border: 20px solid black;
+    padding: 10px;
+}
+
+
+</style>
+
+</head>
+
+
+
+<body background="0377-Water-background.jpg">
+
+<div id="h3">
+                                                                           
+
+<body>
+
+
+<center><h1>Wormhole Attack</h1></center>
+
+
+<h2>Routing Protocols and Wormhole Attack</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+Many routing protocols are available for MANET. In this
+section, some of the frequently used routing protocols are
+reviewed and the threat of wormhole attacks to such protocols
+is considered. These routing protocols can be categorized into
+two types: table-driven/proactive and demand-driven/reactive
+. DSDV, OLSR and SEAD are proactive routing protocols;
+while DSR, AODV and Ariadne are reactive routing
+protocols.
+
+
+<h2>Wormholes and Its Variants</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+This paper focuses on the wormhole attack, where two
+colluding nodes that are far apart are connected by a tunnel
+giving an illusion that they are neighbors. Each of these nodes
+receive route request and topology control messages from the
+network and send it to the other colluding node via tunnel
+which will then replay it into the network from there. </p>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+By using
+this  additional tunnel, these nodes are able to advertise that
+they have the shortest path through them. Once this link is
+established, the attackers may choose each other as multipoint
+relays (MPRs), which then lead to an exchange of some
+topology control (TC) messages and data packets through the
+wormhole tunnel. </p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+Since these MPRs forward flawed topology
+information, it results in spreading of incorrect topology
+information throughout the network . On receiving this
+false information, other nodes may send their messages
+through them for fast delivery. Thus, it prevents honest
+intermediate nodes from establishing links between the source
+and the destination . Sometimes, due to this, even a
+wormhole attacker may fall victim to its own success. </p>
+
+
+
+
+<h2>Prevention of Wormhole Attack</h2>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+Choietal.in is considered that all the nodes will monitor the
+behavior of its neighbors. Each node will send RREQ
+messages to destination by using its neighbor list. If the source
+does not receive back the RREP message within a stipulated
+time, it detects the presence of wormhole and adds the route to
+its wormhole list.</p>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+ Each node maintains a neighbor node table
+which contains a RREQ sequence number, neighbor node ID,
+sending time and receiving time of the RREQ and count. Here
+the source node sets the Wormhole Prevention Timer (WPT)
+after sending RREQ packet and wait until it overhears its
+neighbor's retransmission.</p>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+ According to the author, the
+maximum amount of time required for a packet to travel
+one-hop distance is WPT/2. Therefore, the delay per hop value
+must not exceed estimated WPT. However, the proposed
+method does not fully support DSR as it is based on end-to-end
+signature authentication of routing packets.</p>
+
+
+
+
+
+</body>
+</html>

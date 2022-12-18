@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+/*==========================================================================*/
+
+
+/* IMAGES SLIDE SHOW */
+
+
+
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;margin:0}
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+
+
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  top: 50%;
+  width: auto;
+  padding: 15px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+
+
+
+
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+
+
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+
+
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color:  0.6s ease;
+}
+
+
+
+
+
+.active, .dot:hover {
+  background-color:white;
+}
+
+
+
+
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+
+
+
+
+
+@-webkit-keyframes fade {
+  from {opacity: .3}
+  to {opacity: 1}
+}
+
+
+
+
+
+
+
+@keyframes fade {
+  from {opacity: .3}
+  to {opacity: 1}
+}
+
+
+
+
+
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .slprev, .slnext,.text {font-size: 11px}
+}
+
+
+/* IMAGES SLIDE SHOW */
+
+
+
+/*=====================================================================================*/
+
+
+
+/* BOXES */
+
+
+
+
+#h3{
+    border: 20px solid grey;
+    padding: 10px;
+}
+
+
+#h4{
+    border: 20px solid black;
+    padding: 4px;
+}
+
+
+#h5{
+    border: 10px solid black;
+    padding: 0px;
+}
+
+#h6{
+    border: 15px solid black;
+    padding: 0px;
+}
+
+#h7{
+border:3px solid black;
+ padding: 1px;
+}
+
+#h8{
+border:10px solid yellow;
+ padding: 5px;
+}
+
+
+
+
+/* BOXES */
+
+
+
+/*==================================================================================*/
+
+
+
+/* TABS */
+
+body {font-family: "Lato", sans-serif;}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 25px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: red;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 10px 15px;
+    border: 10px solid	#0000FF;
+    border-top: 10px solid #0000FF;
+}
+
+
+
+
+/* TABS */
+
+
+
+
+
+</style>
+</head>
+
+<body background="a.jpg">
+<div id ="h3">
+
+
+
+
+
+
+
+
+<center><h1 style="font-family:vladimir script;font-size:300%;">Hacky - hacker </h1></center>
+
+
+
+
+
+
+
+<marquee><h4>welcome to my website "Hacky-Hacker" a complete updates on Hacking.</h4></marquee>
+
+
+
+
+
+
+
+
+
+
+
+<div id ="h5">
+
+<ul class="tab">
+  <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'home')"> Home </a></div></b></li>
+  <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'Types Of Hacking')">Types Of Hacking </a></div></b></li>
+  <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'Types Of Hackers')">Types Of Hackers </a></div></b></li>
+   <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'Ethical Hacking')">Ethical Hacking </a></div></b></li>
+  <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'Hacking Attacks')">Hacking Attacks </a></div></b></li>
+ <li><b><div id="h7"><a href="#" class="tablinks" onclick="openCity(event, 'Sql Injection')">&nbsp Sql Injection </a></div></b></li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+<div id ="h4">
+
+<div id="home" class="tabcontent">
+  
+
+<h2>
+<strong><center>
+ <a href="index.html">HOME</a> |
+ <a href="board of directors.html">B0ARD OF DIRECTORS</a> 
+</center></strong>
+ </h2> 
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div id="Types Of Hacking" class="tabcontent">
+<strong>
+<ul>
+  <li><a href="computer hacking.html">Computer Hacking</a></li>
+  <li><a href="credit card hacking.html">Credit Card Hacking</a></li>
+  <li><a href="password hacking.html">Password Hacking</a></li>
+  <li><a href="basics of hacking.html"> Basics Of Hacking</a></li>
+  <li><a href="email hacking.html">Email Hacking</a></li>
+  <li><a href="history of hacking.html">History Of Hacking</a></li>
+  <li><a href="hacking google.html">Google Hacking</a></li>
+  <li><a href="white hat hacking.html">White Hat Hacking</a></li>
+  <li><a href="linux hacking.html">Linux Hacking</a></li>
+  <li><a href="yahoo hacking prog.html">Yahoo Hacking Prog</a></li>
+  <li><a href="game hacking.html">Game Hacking</a></li>
+  <li><a href="mobile phone hacking.html">Mobile Phone Hacking</a></li>
+  <li><a href="website hacking.html">Website Hacking</a></li>
+  <li><a href="network hacking tools.html">Network Hacking Tools</a></li>
+  <li><a href="hacking tutorial.html">Hacking Tutorial</a></li>
+  <li><a href="intrusion detection system.html">Intrusion Detection System </a></li>
+  <li><a href="hacking laws.html">Hacking Laws</a></li>
+  <li><a href="hacking tools.html">Tools Of Hacking</a></li>
+  <li><a href="hacking culture.html">Hacking Culture</a></li>
+  <li><a href="grey hat hacking.html">Grey Hat Hacking</a></li>
+</ul>
+</strong>
+
+</div>
+
+
+
+
+
+<div id="Types Of Hackers" class="tabcontent">
+
+<strong>
+<ul>
+
+  <li><a href="Black hat hackers.html">Black hat hackers</a></li>
+  <li><a href="ethical hacker.html">Ethical Hacker</a></li>
+  <li><a href="state sponsered hackers.html">State Sponsered Hackers</a></li>
+  <li><a href="white hat hackers.html">White Hat Hackers</a></li>
+  <li><a href="script kiddies.html">Script Kiddies</a></li>
+  <li><a href="Certified Ethical Hacker.html">Certified Ethical Hacker</a></li>
+  <li><a href="grey hat hackers.html">Grey Hat Hackers</a></li>
+  <li><a href="cyber terrorists.html">Cyber Terrorists</a></li>
+  <li><a href="hackers and crackers.html">Hackers and Crackers </a></li>
+  <li><a href="catching a hacker.html">Catching a Hacker</a></li>
+  <li><a href="hactivists.html">Hactivists</a></li>
+  <li><a href="hacker software.html">Hacker Software </a></li>
+ 
+</ul>
+</strong>
+</div>
+
+
+
+
+
+
+
+
+
+<div id="Ethical Hacking" class="tabcontent">
+ 
+<strong>
+<ul>
+  <li><a href="ethical hacking part1.html">Ethical Hacking Part1</a></li>
+  <li><a href="ethical hacking part2.html">Ethical Hacking Part2</a></li>
+
+</ul>
+
+</strong>
+</div>
+
+
+
+<div id="Hacking Attacks" class="tabcontent">
+ 
+<strong>
+<ul>
+  <li><a href="Phishing attack.html">Phishing attack</a></li>
+  <li><a href="brute force attack.html">brute force attack</a></li>
+  <li><a href="Information Brokers.html">Information Brokers Attack</a></li>
+  <li><a href="Wormhole Attack.html">Wormhole Attack</a></li>
+  <li><a href="Fake Web sites.html">Fake Web sites</a></li>
+  <li><a href="Electronic Bulletin Boards.html">Electronic Bulletin Boards</a></li>
+  <li><a href="Spyware.html">Spyware Attack</a></li>
+  <li><a href="Trojan programs that share files via instant messenger.html">Trojan Attack</a></li>
+  <li><a href="Internet Public Records.html">Internet Public Records </a></li>
+  <li><a href="Spoofing.html">Spoofing Attack</a></li>
+ 
+</ul>
+
+</strong>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="Sql Injection" class="tabcontent">
+ 
+<strong>
+
+<ul>
+ <li><a href="Sql Injection.html">Sql Injection</a></li>
+ <li><a href="Blind Sql injection part-1.html">Blind Sql Injection Part-1</a></li>
+ <li><a href="blind sql injection part-2.html">Blind Sql Injection Part-2</a></li>
+
+</ul>
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id ="h5">
+
+
+
+
+<center><h4>"Hacking updates & Hacking secrets"</h4></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="slideshow-container">
+
+
+
+
+
+
+
+<div class="mySlides fade">
+  <div class="numbertext">1/ 3</div>
+  <img src="hacking techniques.jpg" style="width:100%">
+  <div class="text">Caption one</div>
+</div>
+
+
+<div class="mySlides fade">
+  <div class="numbertext">2/ 3</div>
+  <img src="security.jpg" style="width:100%">
+  <div class="text">Caption two</div>
+</div>
+
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="hacker.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+
+
+
+<a class="prev" onclick="plusSlides(-1)"><</a>
+<a class="next" onclick="plusSlides(1)">></a>
+
+</div>
+
+
+
+
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+
+
+
+
+
+<center> <h1> OVERVIEW ON HACKING </H1></CENTER>
+
+
+
+
+
+
+
+
+<div id ="h5">
+<center><h2 style="color:blue;">HACKING </h2></center>
+</div>
+<p>
+ "Hacking" is the practice of modifying the features of a system, in order to accomplish a goal outside of the creator's original purpose. 
+The person who is consistently engaging in hacking activities, and has accepted hacking as a lifestyle and philosophy of their choice, is called a <b>hacker</b>.
+</p>
+
+
+ 
+<p>During the 1990s, the term "hacker" originally denoted a skilled programmer proficient in machine code and computer operating systems. 
+In particular, these individuals could always hack on an unsatisfactory system to solve problems and engage in a little software company espionage by
+ interpreting a competitor's code.</p>
+
+
+<p>Unfortunately, some of these hackers also became experts at accessing password-protected computers, files, and networks and came to known as "<b>crackers</b>.
+" Of course, an effective and dangerous "cracker" must be a good hacker and the terms became intertwined. Hacker won out in popular use and in the media and 
+today refers to anyone who performs some form of computer sabotage.</p>
+
+
+
+
+
+<p>
+Due to the mass attention given to <b>blackhat hackers</b> from the media, the whole hacking term is often mistaken for any security related cyber crime. This damages the reputation of all <b>hackers</b>, and is very cruel and unfair to the law abiding ones of them, from who the term itself originated. The goal of this website is to introduce people the true philosophy and ethics of hackers, hopefully clearing their name and giving them the social status they deserve.</p>
+
+
+<p>
+
+The really simple definition of hacking  is gaining an unauthorized access to a computer system.
+ Hacking, for the most part is about learning how a system works and how to make it do things it wasn't designed to do, or you haven't got the privileges to do. </p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+Usually people instantly think hacking is "gaining access into a server", taking a copy of a credit card database or some other attack. This is one end of the spectrum. The other end (the most common end), is perhaps best reflected in wireless routers. A hacker buys a <b>Linksys router</b>, realises that the hardware is extraordinarily limited, and then flashes it and installs new firmware and after a few more tweaks is able to have a cheap router doing the job of a very expensive <b>cisco router.</b>
+
+
+<p>
+The original use of "hacker" was to describe someone who "hack" things, meaning they repurpose something to make it work better or do something new. 
+
+For instance, there are some called "IKEA hackers" to change and repurpose IKEA furniture. 
+
+But as often is the case, media heard the word in connection with illegal network access, and the word got redefined through ignorance. What media now calls "hackers" are in fact "crackers". </P>
+
+
+
+<p>
+You may call them computer burglars. 
+
+There are<b> "white hat" hackers </b>who probe networks and systems and report their successes to those they manage to break into, for the purpose of improving their security, and <b>"black hat" hackers</b> who break into systems for monetary gain, theft, blackmail and sabotage. 
+
+Some hackers, of both kinds, are employed by governments, companies, and various groups who have rather shady practices. </p>
+
+
+<p>
+A <b>"script kiddie" </b>is someone without that knowledge who downloads tools he/she does not understand, using them like a gun on systems they do not understand, then boasting when they do damage. 
+
+The only "profession" I can recommend in this context would be to become a security specialist, and act like a<b> "white hat" </b>hacker by doing penetration testing on networks you have responsibility for. </p><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id ="h5">
+<center><h2 style="color:blue;">Famous Hackers In History</h2></center>
+</div>
+
+
+  <img src="hacker-jonathan-james.jpg" alt="hacker-jonathan-james" style="width:150px;height:150px;">
+
+
+
+
+<h4>Jonathan James :</h4>
+<p>
+ <p>James hacked into NASA's network and downloaded enough source code to learn how the International Space Station worked. The total value of the downloaded assets equaled $1.7 million. To add insult to injury, NASA had to shut down their network for three whole weeks while they investigated the breach, which cost them $41,000.
+
+The story of James has a tragic ending, however. In 2007, a number of high profile companies fell victim to a massive wave of malicious network attacks. Even though James denied any involvement, he was suspected and investigated. In 2008, James committed suicide, believing he would be convicted of crimes that he did not commit.</p><br>
+
+
+
+<img src="hacker-kevin-mitnick.jpg" alt="hacker-kevin-mitnick" style="width:150px;height:150px;">
+
+ 
+<h4>Kevin Mitnick :</h4>
+<p>
+After serving a year in prison for hacking into the Digital Equipment Corporation's network, he was let out for 3 years of supervised release. Near the end of that period, however, he fled and went on a 2.5-year hacking spree that involved breaching the national defense warning system and stealing corporate secrets.
+
+Mitnick was eventually caught and convicted, ending with a 5-year prison sentence. After serving those years fully, he became a consultant and public speaker for computer security. He now runs Mitnick Security Consulting, LLC.</p><br>
+
+
+
+
+
+<img src="hacker-albert-gonzalez.jpg" alt="hacker-albert-gonzalez" style="width:150px;height:150px;">
+
+
+
+<h4>Albert Gonzalez : </h4>
+<p>
+Gonzalez started off as the leader of a hacker group known as ShadowCrew. This group would go on to steal 1.5 million credit card numbers and sell them online for profit. ShadowCrew also fabricated fraudulent passports, health insurance cards, and birth certificates for identity theft crimes totaling $4.3 million stolen.
+
+The big bucks wouldn’t come until later, when Gonzalez hacked into the databases of TJX Companies and Heartland Payment Systems for their stored credit card numbers. In 2010, Gonzalez was sentenced to prison for 20 years (2 sentences of 20 years to be served out simultaneously).</p><br>
+
+
+
+
+
+<img src="hacker-kevin-poulsen.jpg" alt="hacker-kevin-poulsen" style="width:150px;height:150px;">
+
+
+<h4>Kevin Poulsen :</h4>
+<p>
+
+Kevin Poulsen, also known as“Dark Dante,” gained his fifteen minutes of fame by utilizing his intricate knowledge of telephone systems. At one point, he hacked a radio station’s phone lines and fixed himself as the winning caller, earning him a brand new Porsche. According to media, he was called the “Hannibal Lecter of computer crime.”
+
+He then earned his way onto the FBI’s wanted list when he hacked into federal systems and stole wiretap information. Funny enough, he was later captured in a supermarket and sentenced to 51 months in prison, as well paying $56,000 in restitution.
+
+Like Kevin Mitnick, Poulsen changed his ways after being released from prison. He began working as a journalist and is now a senior editor for Wired News. At one point, he even helped law enforcement to identify 744 sex offenders on MySpace.</p><br>
+
+
+
+
+<img src="hacker-gary-mckinnon.jpg" alt="hacker-gary-mckinnon" style="width:150px;height:150px;">
+
+
+
+<h4>Gary McKinnon :</h4>
+<p>Famous hackersGary McKinnon was known by his Internet handle, “Solo.” Using that name, he coordinated what would become the largest military computer hack of all time. The allegations are that he, over a 13-month period from February 2001 to March 2002, illegally gained access to 97 computers belonging to the U.S. Armed Forces and NASA.
+
+McKinnon claimed that he was only searching for information related to free energy suppression and UFO activity cover-ups. But according to U.S. authorities, he deleted a number of critical files, rendering over 300 computers inoperable and resulting in over $700,000 in damages.
+
+Being of Scottish descent and operating out of the United Kingdom, McKinnon was able to dodge the American government for a time. As of today, he continues to fight against extradition to the United States.
+
+Now, do you know any famous hackers who should be in this hall of infamy? Put his (or her) name down in the comments.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id ="h5">
+<center><h2 style="color:blue;">Basic Skills Required For Hacking</h2></center>
+</div>
+
+
+
+
+
+<p>1. Learn how to program.<br>
+2. Get one of the open-source Unixes and learn to use and run it.<br>
+3. Learn how to use the World Wide Web and write HTML.<br>
+4. If you don't have functional English, learn it.<br>
+&nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp          The hacker attitude is vital, but skills are even more vital. Attitude is no substitute for competence, and there's a certain basic toolkit of skills which you have to have before any hacker will dream of calling you one.
+
+This toolkit changes slowly over time as technology creates new skills and makes old ones obsolete. For example, it used to include programming in machine language, and didn't until recently involve HTML. But right now it pretty clearly includes the following:<br>
+
+<h3>1. Learn how to program.</h3>
+<p>
+I used to recommend Java as a good language to learn early, but this critique has changed my mind (search for “The Pitfalls of Java as a First Programming Language” within it). A hacker cannot, as they devastatingly put it “approach problem-solving like a plumber in a hardware store”; you have to know what the components actually do. Now I think it is probably best to learn C and Lisp first, then Java.</p>
+
+<p>
+If you get into serious programming, you will have to learn C, the core language of Unix. C++ is very closely related to C; if you know one, learning the other will not be difficult. Neither language is a good one to try learning as your first, however. And, actually, the more you can avoid programming in C the more productive you will be.
+
+C is very efficient, and very sparing of your machine's resources. Unfortunately, C gets that efficiency by requiring you to do a lot of low-level management of resources (like memory) by hand. All that low-level code is complex and bug-prone, and will soak up huge amounts of your time on debugging. With today's machines as powerful as they are, this is usually a bad tradeoff — it's smarter to use a language that uses the machine's time less efficiently, but your time much more efficiently. Thus, Python.</p>
+
+<p>
+
+Other languages of particular importance to hackers include Perl and LISP. Perl is worth learning for practical reasons; it's very widely used for active web pages and system administration, so that even if you never write Perl you should learn to read it. Many people use Perl in the way I suggest you should use Python, to avoid C programming on jobs that don't require C's machine efficiency. You will need to be able to understand their code.
+
+LISP is worth learning for a different reason — the profound enlightenment experience you will have when you finally get it. That experience will make you a better programmer for the rest of your days, even if you never actually use LISP itself a lot. (You can get some beginning experience with LISP fairly easily by writing and modifying editing modes for the Emacs text editor, or Script-Fu plugins for the GIMP.)</p>
+
+<p>
+It's best, actually, to learn all five of Python, C/C++, Java, Perl, and LISP. Besides being the most important hacking languages, they represent very different approaches to programming, and each will educate you in valuable ways.
+
+But be aware that you won't reach the skill level of a hacker or even merely a programmer simply by accumulating languages — you need to learn how to think about programming problems in a general way, independent of any one language. To be a real hacker, you need to get to the point where you can learn a new language in days by relating what's in the manual to what you already know. This means you should learn several very different languages.</p>
+
+<p>
+
+I can't give complete instructions on how to learn to program here — it's a complex skill. But I can tell you that books and courses won't do it — many, maybe most of the best hackers are self-taught. You can learn language features — bits of knowledge — from books, but the mind-set that makes that knowledge into living skill can be learned only by practice and apprenticeship. What will do it is (a) reading code and (b) writing code.
+
+Peter Norvig, who is one of Google's top hackers and the co-author of the most widely used textbook on AI, has written an excellent essay called Teach Yourself Programming in Ten Years. His "recipe for programming success" is worth careful attention.</p>
+
+<p>
+Learning to program is like learning to write good natural language. The best way to do it is to read some stuff written by masters of the form, write some things yourself, read a lot more, write a little more, read a lot more, write some more ... and repeat until your writing begins to develop the kind of strength and economy you see in your models.
+
+Finding good code to read used to be hard, because there were few large programs available in source for fledgeling hackers to read and tinker with. This has changed dramatically; open-source software, programming tools, and operating systems (all built by hackers) are now widely available. Which brings me neatly to our next topic...</p>
+
+<h3>2. Get one of the open-source Unixes and learn to use and run it.</h3>
+<p>
+I'll assume you have a personal computer or can get access to one. (Take a moment to appreciate how much that means. The hacker culture originally evolved back when computers were so expensive that individuals could not own them.) The single most important step any newbie can take toward acquiring hacker skills is to get a copy of Linux or one of the BSD-Unixes or OpenSolaris, install it on a personal machine, and run it.
+
+Yes, there are other operating systems in the world besides Unix. But they're distributed in binary — you can't read the code, and you can't modify it. Trying to learn to hack on a Microsoft Windows machine or under any other closed-source system is like trying to learn to dance while wearing a body cast.</p>
+
+<p>
+Under Mac OS X it's possible, but only part of the system is open source — you're likely to hit a lot of walls, and you have to be careful not to develop the bad habit of depending on Apple's proprietary code. If you concentrate on the Unix under the hood you can learn some useful things.
+
+Unix is the operating system of the Internet. While you can learn to use the Internet without knowing Unix, you can't be an Internet hacker without understanding Unix. For this reason, the hacker culture today is pretty strongly Unix-centered. (This wasn't always true, and some old-time hackers still aren't happy about it, but the symbiosis between Unix and the Internet has become strong enough that even Microsoft's muscle doesn't seem able to seriously dent it.)</p>
+
+<p>
+So, bring up a Unix — I like Linux myself but there are other ways (and yes, you can run both Linux and Microsoft Windows on the same machine). Learn it. Run it. Tinker with it. Talk to the Internet with it. Read the code. Modify the code. You'll get better programming tools (including C, LISP, Python, and Perl) than any Microsoft operating system can dream of hosting, you'll have fun, and you'll soak up more knowledge than you realize you're learning until you look back on it as a master hacker.
+
+For more about learning Unix, see The Loginataka. You might also want to have a look at The Art Of Unix Programming.
+
+To get your hands on a Linux, see the Linux Online! site; you can download from there or (better idea) find a local Linux user group to help you with installation.
+
+During the first ten years of this HOWTO's life, I reported that from a new user's point of view, all Linux distributions are almost equivalent. But in 2006-2007, an actual best choice emerged: Ubuntu. While other distros have their own areas of strength, Ubuntu is far and away the most accessible to Linux newbies.
+
+You can find BSD Unix help and resources at "www.bsd.org".</p>
+
+<p>
+A good way to dip your toes in the water is to boot up what Linux fans call a live CD, a distribution that runs entirely off a CD without having to modify your hard disk. This will be slow, because CDs are slow, but it's a way to get a look at the possibilities without having to do anything drastic.
+
+I have written a primer on the basics of Unix and the Internet.
+
+I used to recommend against installing either Linux or BSD as a solo project if you're a newbie. Nowadays the installers have gotten good enough that doing it entirely on your own is possible, even for a newbie. Nevertheless, I still recommend making contact with your local Linux user's group and asking for help. It can't hurt, and may smooth the process.</p>
+
+<h3>3. Learn how to use the World Wide Web and write HTML.</h3>
+<p>
+Most of the things the hacker culture has built do their work out of sight, helping run factories and offices and universities without any obvious impact on how non-hackers live. The Web is the one big exception, the huge shiny hacker toy that even politicians admit has changed the world. For this reason alone (and a lot of other good ones as well) you need to learn how to work the Web.
+
+This doesn't just mean learning how to drive a browser (anyone can do that), but learning how to write HTML, the Web's markup language. If you don't know how to program, writing HTML will teach you some mental habits that will help you learn. So build a home page. Try to stick to XHTML, which is a cleaner language than classic HTML. (There are good beginner tutorials on the Web; here's one.)</p>
+
+<p>
+But just having a home page isn't anywhere near good enough to make you a hacker. The Web is full of home pages. Most of them are pointless, zero-content sludge — very snazzy-looking sludge, mind you, but sludge all the same (for more on this see The HTML Hell Page).
+
+To be worthwhile, your page must have content — it must be interesting and/or useful to other hackers. And that brings us to the next topic...</p>
+
+<h3>4. If you don't have functional English, learn it.</h3>
+<p>
+As an American and native English-speaker myself, I have previously been reluctant to suggest this, lest it be taken as a sort of cultural imperialism. But several native speakers of other languages have urged me to point out that English is the working language of the hacker culture and the Internet, and that you will need to know it to function in the hacker community.
+
+Back around 1991 I learned that many hackers who have English as a second language use it in technical discussions even when they share a birth tongue; it was reported to me at the time that English has a richer technical vocabulary than any other language and is therefore simply a better tool for the job. For similar reasons, translations of technical books written in English are often unsatisfactory (when they get done at all).</p>
+
+<p>
+
+Linus Torvalds, a Finn, comments his code in English (it apparently never occurred to him to do otherwise). His fluency in English has been an important factor in his ability to recruit a worldwide community of developers for Linux. It's an example worth following.
+
+Being a native English-speaker does not guarantee that you have language skills good enough to function as a hacker. If your writing is semi-literate, ungrammatical, and riddled with misspellings, many hackers (including myself) will tend to ignore you. While sloppy writing does not invariably mean sloppy thinking, we've generally found the correlation to be strong — and we have no use for sloppy thinkers. If you can't yet write competently, learn to.</p>
+
+
+
+
+
+<div id ="h5">
+<center><h2 style="color:blue;">Advantages & Disadvantages About "HACKING"</h2></center>
+</div>
+
+
+
+ <h3>Advantages:</h3>
+<p> =>Learning to think outside the box. <br>
+=>Learn to work independently. <br>
+=>Learn to work stealthily. <br>
+=>hacking makes us aware about the possible loopholes of the any system, hacking tools are used to test the security of a network, PC etc. <br>
+=>hacking tools are used to test the security of a network, pc etc. <br>
+ =>Hacking Can obtain valuable information without other person known.<br>
+ =>Hacking Gain profit from it.<br>
+ =>Hacking To monitor other people do.<br>
+ =>Hacking Can be used to recover lost information where the computer password has been lost. <br>
+=>You get to feel special. 
+
+
+
+
+
+
+
+<h3>Disadvantages:</h3>
+<p>=> IF others know about you [and your actions], THEN they can blame you.<br>
+ =>Unauthorized access of computer, Hacking is to steal ones secret by breaking security like free internet, free calls,yahoo,stealing ones mail and much more.<br>
+=>Hacking is being used by criminals to steal information and passwords<br> 
+=>well people who hack into your computers will be able to see all your personal information, they can even steal your bank details. plus they can send harmful viruses to your computer.<br> 
+=>Get caught by authorities.<br>
+=>Can lead to social problem.<br>
+=>It makes you a complete wanker.<br>
+=>Criminals can use it to their advantage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<div id ="h5"><br>
+
+
+
+
+<center><b> "Watch this video about hacking in a ppt format"</b></center>
+
+
+
+
+
+<center><iframe title="youtube video.player" width="750" height="500" src="http://www.youtube.com/embed/8FI8yZU1-kk" frameborder="0" allowfullscreen></iframe></center><br>
+
+ 
+
+
+<center><b><a href="ppt on hacking.wmv">Hacking video </a><b>( ppt format )</center>
+</div><br>
+
+
+
+
+
+
+
+<br>
+<div id ="h5"><br>
+
+
+
+<center><b> "Watch this video about login approvals"</b></center>
+
+
+
+<b><p>watch this video guys : By logging into fb login approvals 
+page you can keep your fb 100% secure. even if your friend knows your id and password he cant open your fb account.
+
+<center><iframe title="youtube video.player" width="750" height="500" src="http://www.youtube.com/embed/5EPTWcWeKM0" frameborder="0" allowfullscreen></iframe></center><br>
+
+
+
+<center>
+Download our video hear :<b><a href="how to turn on login approvals option.mp4">Login Approvels </a><b></center>
+</div><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
